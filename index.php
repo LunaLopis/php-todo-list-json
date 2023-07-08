@@ -14,25 +14,31 @@
      <title>Document</title>
 </head>
 <body>
-        <div class="contenitore-uno">
-            <div class="container m-5">
-               <div class="row  d-flex justify-content-center">
-               <h1 class="text-center">toDoList</h1>
+        <div class="contenitore-uno bg-dark text-white">
+            <div class="container pt-5">
+               <div class="row d-flex justify-content-center">
+                   <div class="content">
+                       <h1 class="text-center">toDoList</h1>
+                   </div>
+                </div>
             </div>
-               </div>
-            </div>
+            
 
             <div id="App">
-                <div class="container m-5 ">
-                <div class="row">
+                <div class="container pt-5">
+                <div class="row d-flex justify-content-center">
                     <div class="col-12">
-
-                    </div>  
-                    <ul class="list-group list-group-flush border-1 rounded">
-                        <li v-for="(item, index) in toDoList" :key="index" class="list-group-item">{{item.text}}
-                        </li>
-                    </ul>
+                    </div class="content bg-danger">  
+                        <ul class="list-group list-group-flush border-1 rounded">
+                            <li v-for="(item, index) in toDoList" :key="index" class="list-group-item">{{item.text}}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="container pt-5 overflow-hidden">
+                    <input type="text" @keyup.enter="updateList" v-model="toDoItem"
+                    placeholder="Todo" class="form-control">
+                    <button type="button" @click="updateList"></button>
                 </div>
 
             </div>

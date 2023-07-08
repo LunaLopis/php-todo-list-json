@@ -5,9 +5,14 @@ header('Content-Type: application/json');
 $jsonData = file_get_contents('data/todo_list.json');
 
 // coverte il JSON in un array associativo
-$todoList = json_decode($jsonData, true);
+$toDoList = json_decode($jsonData, true);
 
-// ivia array
-echo json_encode($todoList);
+if (isset($_POST['toDoItem']) && $_POST['toDoItem'] !== '') {
+    $newItem = array('text' => $_POST['toDoItem'], 'done' => true);
+    $toDoList[] = $newItem;
+    file_put_contents('data/todo_list.json', json_encode($toDoList));
+}
+// invia array
+echo json_encode($toDoList);
 
 ?>
